@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro_style.css">
+    <!-- Referenciar o script -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/frontend/cadastrar/cadastrar.js"></script>
+    <title>Cadastro de Clientes</title>
+</head>
+
+<body>
+    <form id="formCadastro">
+        <h2>Cadastro</h2>
+        <div id="container_item">
+            <label for="txtNome">Nome: </label>
+            <input type="text" name="txtNome" id="txtNome" placeholder="Digite o nome">
+        </div>
+        <div id="container_item">
+            <label for="txtCPF">CPF: </label>
+            <input type="text" name="txtCPF" id="txtCPF" placeholder="Digite o CPF">
+        </div>
+        <div id="container_item">
+            <label for="dateNasc">Data de nascimento: </label>
+            <input id="dateNasc" type="date" name="dateNasc">
+        </div>
+        <div id="container_item">
+            <label for="txtEmail">Email: </label>
+            <input type="email" name="txtEmail" id="txtEmail" placeholder="Digite o email">
+        </div>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+
+</html>
