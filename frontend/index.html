@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" href="style/components.css">
+
+  <title>Sistema de Cadastro de Clientes</title>
+</head>
+
+<body>
+  <!-- Navbar Superior -->
+  <nav class="navbar">
+    <h1>Sistema de Cadastro de Clientes</h1>
+  </nav>
+
+  <!-- Container Principal -->
+  <div id="container">
+
+    <!-- Seção de Busca e Cadastro -->
+    <header class="header">
+      <h3>Lista de Clientes</h3>
+      <div class="actions">
+        <input type="text" id="searchInput" placeholder="Buscar cliente..." class="search-bar">
+        <button onclick="location.href='/frontend/cadastrar/cadastrar.html'" class="btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+        </button>
+
+        <button id="openModal" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+          Cadastrar Cliente
+        </button>
+      </div>
+    </header>
+
+    <section>
+      <ul id="client-list" class="client-list">
+        
+      </ul>
+    </section>
+
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Cadastro</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <br>
+      <form id="formCadastro">
+        <div class="form-item">
+          <label for="txtNome">Nome: </label>
+          <input type="text" name="txtNome" id="txtNome" placeholder="Digite o nome">
+        </div>
+        <div class="form-item">
+          <label for="txtCPF">CPF: </label>
+          <input type="text" name="txtCPF" id="txtCPF" placeholder="Digite o CPF">
+        </div>
+        <div class="form-item">
+          <label for="dateNasc">Data de nascimento: </label>
+          <input id="dateNasc" type="date" name="dateNasc">
+        </div>
+        <div class="form-item">
+          <label for="txtEmail">Email: </label>
+          <input type="email" name="txtEmail" id="txtEmail" placeholder="Digite o email">
+        </div>
+        <button type="submit" class="btn-primary">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script/create.js"></script>
+  <script src="script/read.js"></script>
+  <script src="script/update.js"></script>
+  <script src="script/delete.js"></script>
+
+  <script src="script/components.js"></script>
+
+</body>
+
+</html>
