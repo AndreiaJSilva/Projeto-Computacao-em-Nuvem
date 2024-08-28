@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* List clients */
   function listClients() {
     axios
-      .get('/clientes')
+      .get('http://127.0.0.1:3000/clientes')
       .then((response) => {
         const clientes = response.data;
         clientList.innerHTML = '';
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <p class="client-name">${cliente.nome}</p>
               <div>
                 <p>CPF: ${cliente.cpf}</p>
-                <p>Data de Nasc.: ${formatarDataBR(cliente.dataNascimento)}</p>
+                <p>Data de Nasc.: ${formatarDataBR(cliente.data_nascimento)}</p>
                 <p>Email: ${cliente.email}</p>
               </div>
             </div>
@@ -94,14 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = 'Editar Cliente';
 
         axios
-          .get(`/clientes/${cpf}`)
+          .get(`http://127.0.0.1:3000/clientes/${cpf}`)
           .then((response) => {
             const cliente = response.data;
             cpfForEdition = cliente.cpf;
             document.getElementById('txtNome').value = cliente.nome;
             document.getElementById('txtCPF').value = cliente.cpf;
             document.getElementById('dateNasc').value = formatarDataUS(
-              cliente.dataNascimento,
+              cliente.data_nascimento,
             );
             document.getElementById('txtEmail').value = cliente.email;
           })
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmDeleteButton.addEventListener('click', () => {
       if (cpfForDeletion) {
         axios
-          .delete(`/clientes/${cpfForDeletion}`)
+          .delete(`http://127.0.0.1:3000/clientes/${cpfForDeletion}`)
           .then((response) => {
             document
               .querySelector(`.btn-delete[data-cpf="${cpfForDeletion}"]`)
@@ -167,14 +167,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const cliente = {
       nome: nome,
       cpf: cpf,
-      dataNascimento: dataNascimento,
+      data_nascimento: dataNascimento,
       email: email,
     };
 
     if (cpfForEdition) {
       // Update current client
       axios
-        .put(`/clientes/${cpfForEdition}`, cliente)
+        .put(`http://127.0.0.1:3000/clientes/${cpfForEdition}`, cliente)
         .then((response) => {
           modal.style.display = 'none';
           form.reset();
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // Add new client
       axios
-        .post('/clientes', cliente)
+        .post('http://127.0.0.1:3000/clientes', cliente)
         .then((response) => {
           modal.style.display = 'none';
           form.reset();
