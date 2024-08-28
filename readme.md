@@ -1,4 +1,9 @@
+<div align="center">
+
 # Sistema de Cadastro de Clientes
+
+<img width="600" style="border-radius: 6px" height="auto" alt="interface do sistema" title="interface do sistema" src="public/interface.png" />
+</div>
 
 ### GCC180 – Computação em Nuvem
 
@@ -40,77 +45,77 @@ O sistema é dividido em duas partes principais:
 
 ### 1. **Criação da Tabela**
 
-   Crie uma conexão com o MySQL e execute o seguinte comando SQL para criar a tabela clientes no banco de dados MySQL:
+Crie uma conexão com o MySQL e execute o seguinte comando SQL para criar a tabela clientes no banco de dados MySQL:
 
-   ```sql
-   CREATE TABLE clientes (
-       id INT AUTO_INCREMENT PRIMARY KEY,
-       nome VARCHAR(255) NOT NULL,
-       cpf VARCHAR(14) NOT NULL,
-       dataNascimento DATE NOT NULL,
-       email VARCHAR(255) NOT NULL
-   );
-   ```
+```sql
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
+    dataNascimento DATE NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
+```
 
 ### 2. **Configuração das Variáveis de Ambiente**
 
-   Crie o arquivo `.env` na pasta `backend` com as seguintes configurações:
+Crie o arquivo `.env` na pasta `backend` com as seguintes configurações:
 
-   ```env
-   DB_HOST=localhost
-   DB_USER=usuario
-   DB_PASSWORD=senha
-   DB_NAME=nome_banco
-   ```
+```env
+DB_HOST=localhost
+DB_USER=usuario
+DB_PASSWORD=senha
+DB_NAME=nome_banco
+```
 
 ### 3. **Configurações do Frontend**
 
-   1. Navegue até o diretório frontend:
+1.  Navegue até o diretório frontend:
 
-      ```bash
-      cd frontend
-      ```
+    ```bash
+    cd frontend
+    ```
 
-   2. Instale as dependencias:
+2.  Instale as dependencias:
 
-      ```bash
-      yarn install
-      ```
+    ```bash
+    yarn install
+    ```
 
-      ou
+    ou
 
-      ```bash
-      npm install
-      ```
+    ```bash
+    npm install
+    ```
 
 ### 4. **Configurações do Backend**
 
-   Para iniciar o backend, siga os seguintes passos:
+Para iniciar o backend, siga os seguintes passos:
 
-   1. Navegue até o diretório backend:
+1.  Navegue até o diretório backend:
 
-      ```bash
-      cd backend
-      ```
+    ```bash
+    cd backend
+    ```
 
-   2. Instale as dependencias:
+2.  Instale as dependencias:
 
-      ```
-      yarn install
-      ```
+    ```
+    yarn install
+    ```
 
-      ou
+    ou
 
-      ```bash
-      npm install
-      ```
+    ```bash
+    npm install
+    ```
 
-   3. Inicie o servidor:
+3.  Inicie o servidor:
 
-      ```bash
-      node index.js
-      ```
+    ```bash
+    node index.js
+    ```
 
 ### 5. **Utilizando o Sistema**
 
-   O sistema estará acessível em http://localhost:3000.
+O sistema estará acessível em http://localhost:3000.
