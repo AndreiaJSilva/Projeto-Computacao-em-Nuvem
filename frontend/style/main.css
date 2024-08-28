@@ -18,7 +18,9 @@ body {
 
 .header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 #client-count {
@@ -72,7 +74,7 @@ svg {
 }
 .client-info div {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 150px 220px 1fr;
   font-size: 0.85rem;
 }
 
@@ -92,4 +94,15 @@ svg {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .client-info div {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    align-items: start;
+    flex-direction: column;
+  }
 }
