@@ -39,9 +39,9 @@ app.get('/clientes/:cpf', (req, res) => {
 });
 
 app.post('/clientes', (req, res) => {
-  const { nome, cpf, dataNascimento, email } = req.body;
-
-  if (!nome || !cpf || !dataNascimento || !email) {
+  const { nome, cpf, data_nascimento, email } = req.body;
+  
+  if (!nome || !cpf || !data_nascimento || !email) {
     return res.status(400).json({
       error:
         'Todos os campos (nome, cpf, dataNascimento e email) são necessários',
@@ -62,18 +62,18 @@ app.post('/clientes', (req, res) => {
     }
 
     const insertSql =
-      'INSERT INTO clientes (nome, cpf, dataNascimento, email) VALUES (?, ?, ?, ?)';
+      'INSERT INTO clientes (nome, cpf, data_nascimento, email) VALUES (?, ?, ?, ?)';
 
     connection.query(
       insertSql,
-      [nome, cpf, dataNascimento, email],
+      [nome, cpf, data_nascimento, email],
       (err, result) => {
         if (err) {
           return res.status(500).json({ error: err.message });
         }
         res
           .status(201)
-          .json({ id: result.insertId, nome, cpf, dataNascimento, email });
+          .json({ id: result.insertId, nome, cpf, data_nascimento, email });
       },
     );
   });
@@ -81,18 +81,18 @@ app.post('/clientes', (req, res) => {
 
 app.put('/clientes/:cpf', (req, res) => {
   const { cpf } = req.params;
-  const { nome, dataNascimento, email } = req.body;
+  const { nome, data_nascimento, email } = req.body;
 
-  if (!nome || !dataNascimento || !email) {
+  if (!nome || !data_nascimento || !email) {
     return res.status(400).json({
       error: 'Todos os campos (nome, dataNascimento e email) são necessários',
     });
   }
 
   const sql =
-    'UPDATE clientes SET nome = ?, dataNascimento = ?, email = ? WHERE cpf = ?';
+    'UPDATE clientes SET nome = ?, data_nascimento = ?, email = ? WHERE cpf = ?';
 
-  connection.query(sql, [nome, dataNascimento, email, cpf], (err, result) => {
+  connection.query(sql, [nome, data_nascimento, email, cpf], (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
