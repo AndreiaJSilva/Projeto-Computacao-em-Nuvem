@@ -28,7 +28,10 @@
 
     <!-- Seção de Busca e Cadastro -->
     <header class="header">
-      <h3>Lista de Clientes</h3>
+      <div>
+        <h3>Lista de Clientes</h3>
+        <p id="client-count"></p>
+      </div>
       <div class="actions">
         <input type="text" id="searchInput" placeholder="Buscar cliente..." class="search-bar">
         <button onclick="location.href='/frontend/cadastrar/cadastrar.html'" class="btn-secondary">
@@ -37,7 +40,7 @@
           </svg>
         </button>
 
-        <button id="openModal" class="btn-primary">
+        <button id="open-add-modal" class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
@@ -47,46 +50,58 @@
     </header>
 
     <section>
-      <ul id="client-list" class="client-list">
-        
-      </ul>
+      <ul id="client-list" class="client-list"></ul>
     </section>
-
   </div>
 
   <div id="modal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Cadastro</h2>
-        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Cadastro</h2>
+        <span id="modal-close" class="close-modal">&times;</span>
       </div>
       <br>
-      <form id="formCadastro">
+      <form id="form-cadastro">
         <div class="form-item">
           <label for="txtNome">Nome: </label>
-          <input type="text" name="txtNome" id="txtNome" placeholder="Digite o nome">
+          <input type="text" name="txtNome" id="txtNome" placeholder="Digite o nome" required>
         </div>
         <div class="form-item">
           <label for="txtCPF">CPF: </label>
-          <input type="text" name="txtCPF" id="txtCPF" placeholder="Digite o CPF">
+          <input type="text" name="txtCPF" id="txtCPF" placeholder="Digite o CPF" required>
         </div>
         <div class="form-item">
-          <label for="dateNasc">Data de nascimento: </label>
-          <input id="dateNasc" type="date" name="dateNasc">
+          <label for="dateNasc">Data de Nascimento: </label>
+          <input id="dateNasc" type="date" name="dateNasc" required>
         </div>
         <div class="form-item">
           <label for="txtEmail">Email: </label>
-          <input type="email" name="txtEmail" id="txtEmail" placeholder="Digite o email">
+          <input type="email" name="txtEmail" id="txtEmail" placeholder="Digite o email" required>
         </div>
-        <button type="submit" class="btn-primary">Cadastrar</button>
+        <button type="submit" class="btn-primary">Salvar</button>
       </form>
     </div>
   </div>
 
-  <script src="script/create.js"></script>
-  <script src="script/read.js"></script>
-  <script src="script/update.js"></script>
-  <script src="script/delete.js"></script>
+  <!-- Modal de Confirmação -->
+  <div id="confirm-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Tem Certeza?</h2>
+        <span id="confirm-modal-close" class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Você tem certeza de que deseja excluir este cliente?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-delete" class="btn-secondary">Cancelar</button>
+        <button id="confirm-delete" class="btn-danger">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script/index.js"></script>
 
   <script src="script/components.js"></script>
 
