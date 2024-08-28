@@ -104,4 +104,4 @@ Para iniciar o backend, siga os seguintes passos:
 
 ### 5. **Utilizando o Sistema**
 
-O sistema estará disponível em http://localhost:3000.
+O sistema estará disponível em http://18.231.168.144:3000
