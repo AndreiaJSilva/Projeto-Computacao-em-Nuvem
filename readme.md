@@ -2,7 +2,7 @@
 
 # Sistema de Cadastro de Clientes
 
-<img width="600" style="border-radius: 6px" height="auto" alt="interface do sistema" title="interface do sistema" src="public/interface.png" />
+<img width="100%" style="border-radius: 6px" height="auto" alt="interface do sistema" title="interface do sistema" src="public/interface.png" />
 </div>
 
 ### GCC180 – Computação em Nuvem
@@ -76,7 +76,7 @@ DB_NAME=nome_banco
     cd frontend
     ```
 
-2.  Instale as dependencias:
+2.  Instale as dependências:
 
     ```bash
     yarn install
@@ -98,7 +98,7 @@ Para iniciar o backend, siga os seguintes passos:
     cd backend
     ```
 
-2.  Instale as dependencias:
+2.  Instale as dependências:
 
     ```
     yarn install
@@ -118,4 +118,4 @@ Para iniciar o backend, siga os seguintes passos:
 
 ### 5. **Utilizando o Sistema**
 
-O sistema estará acessível em http://localhost:3000.
+O sistema estará disponível em http://localhost:3000.
