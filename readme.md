@@ -34,13 +34,6 @@ O projeto consiste no desenvolvimento de um sistema para o cadastro e gerenciame
 - A interface web deve ser executada em uma máquina virtual (Amazon EC2).
 - Caso não utilize a AWS, devem ser seguidos requisitos equivalentes com outros serviços.
 
-## Estrutura do Projeto
-
-O sistema é dividido em duas partes principais:
-
-1. **Backend**: Responsável pelo gerenciamento de dados e operações CRUD.
-2. **Frontend**: Interface web para interação com o usuário.
-
 ## Configuração do Sistema
 
 ### 1. **Criação da Tabela**
