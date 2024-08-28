@@ -27,13 +27,6 @@ O projeto consiste no desenvolvimento de um sistema para o cadastro e gerenciame
 - Buscar um cliente pelo nome e/ou CPF
 - Listar todos os clientes cadastrados
 
-## Requisitos do Sistema
-
-- As informações dos clientes devem ser armazenadas em um banco de dados relacional (Amazon RDS).
-- O banco de dados deve estar em uma rede virtual privada (VPC) para garantir que não seja acessado diretamente pela internet. Apenas a instância do servidor web deve ter acesso ao banco de dados.
-- A interface web deve ser executada em uma máquina virtual (Amazon EC2).
-- Caso não utilize a AWS, devem ser seguidos requisitos equivalentes com outros serviços.
-
 ## Configuração do Sistema
 
 ### 1. **Criação da Tabela**
