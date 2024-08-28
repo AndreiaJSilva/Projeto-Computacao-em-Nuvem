@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json());
 app.use(cors());
 
-// Rota para listar clientes
 app.get('/clientes', (req, res) => {
   const sql = 'SELECT * FROM clientes';
 
@@ -22,42 +21,104 @@ app.get('/clientes', (req, res) => {
   });
 });
 
-app.post('/clientes', (req, res) => {
-  const { nome, cpf, dataNascimento, email } = req.body;
-  const sql =
-    'INSERT INTO clientes (nome, cpf, dataNascimento, email) VALUES (?, ?, ?, ?)';
+app.get('/clientes/:cpf', (req, res) => {
+  const { cpf } = req.params;
+  const sql = 'SELECT * FROM clientes WHERE cpf = ?';
 
-  connection.query(sql, [nome, cpf, dataNascimento, email], (err, result) => {
+  connection.query(sql, [cpf], (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-    res
-      .status(201)
-      .json({ id: result.insertId, nome, cpf, dataNascimento, email });
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Cliente não encontrado' });
+    }
+
+    res.json(results[0]);
   });
 });
 
-app.put('/clientes/:id', (req, res) => {
-  const { id } = req.params;
-  const { nome, email } = req.body;
-  const sql = 'UPDATE clientes SET nome = ?, email = ? WHERE id = ?';
+app.post('/clientes', (req, res) => {
+  const { nome, cpf, dataNascimento, email } = req.body;
 
-  connection.query(sql, [nome, email, id], (err, result) => {
+  if (!nome || !cpf || !dataNascimento || !email) {
+    return res.status(400).json({
+      error:
+        'Todos os campos (nome, cpf, dataNascimento e email) são necessários',
+    });
+  }
+
+  const checkCpfSql = 'SELECT * FROM clientes WHERE cpf = ?';
+
+  connection.query(checkCpfSql, [cpf], (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
+
+    if (results.length > 0) {
+      return res
+        .status(400)
+        .json({ error: 'Este CPF já está cadastrado no sistema' });
+    }
+
+    const insertSql =
+      'INSERT INTO clientes (nome, cpf, dataNascimento, email) VALUES (?, ?, ?, ?)';
+
+    connection.query(
+      insertSql,
+      [nome, cpf, dataNascimento, email],
+      (err, result) => {
+        if (err) {
+          return res.status(500).json({ error: err.message });
+        }
+        res
+          .status(201)
+          .json({ id: result.insertId, nome, cpf, dataNascimento, email });
+      },
+    );
+  });
+});
+
+app.put('/clientes/:cpf', (req, res) => {
+  const { cpf } = req.params;
+  const { nome, dataNascimento, email } = req.body;
+
+  if (!nome || !dataNascimento || !email) {
+    return res.status(400).json({
+      error: 'Todos os campos (nome, dataNascimento e email) são necessários',
+    });
+  }
+
+  const sql =
+    'UPDATE clientes SET nome = ?, dataNascimento = ?, email = ? WHERE cpf = ?';
+
+  connection.query(sql, [nome, dataNascimento, email, cpf], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Cliente não encontrado' });
+    }
+
     res.json({ message: 'Cliente atualizado com sucesso' });
   });
 });
 
-app.delete('/clientes/:id', (req, res) => {
-  const { id } = req.params;
-  const sql = 'DELETE FROM clientes WHERE id = ?';
+app.delete('/clientes/:cpf', (req, res) => {
+  const { cpf } = req.params;
+  const sql = 'DELETE FROM clientes WHERE cpf = ?';
 
-  connection.query(sql, [id], (err, result) => {
+  connection.query(sql, [cpf], (err, result) => {
     if (err) {
+      console.error('Erro ao deletar cliente:', err);
       return res.status(500).json({ error: err.message });
     }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Cliente não encontrado' });
+    }
+
     res.json({ message: 'Cliente deletado com sucesso' });
   });
 });

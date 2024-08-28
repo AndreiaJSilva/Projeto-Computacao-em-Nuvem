@@ -13,12 +13,17 @@ body {
 }
 
 #container {
-  padding: 1rem 2rem;
+  padding: 2rem;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+#client-count {
+  color: #64748b;
+  font-size: 0.875rem;
 }
 
 .actions {
@@ -53,9 +58,22 @@ svg {
 }
 
 .client-list {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: grid;
   gap: 0.5rem;
+}
+
+.client-info {
+  display: grid;
+  gap: 0.5rem;
+}
+.client-info .client-name {
+  font-weight: 500;
+}
+.client-info div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  font-size: 0.85rem;
 }
 
 .client-item {
