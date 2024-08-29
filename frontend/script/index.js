@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* List clients */
   function listClients() {
     axios
-      .get('http://18.231.168.144:3000/clientes')
+      .get(`${process.env.API_URL}/clientes`)
       .then((response) => {
         const clientes = response.data;
         clientList.innerHTML = '';
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = 'Editar Cliente';
 
         axios
-          .get(`http://18.231.168.144:3000/clientes/${cpf}`)
+          .get(`${process.env.API_URL}/clientes/${cpf}`)
           .then((response) => {
             const cliente = response.data;
             cpfForEdition = cliente.cpf;
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmDeleteButton.addEventListener('click', () => {
       if (cpfForDeletion) {
         axios
-          .delete(`http://18.231.168.144:3000/clientes/${cpfForDeletion}`)
+          .delete(`${process.env.API_URL}/clientes/${cpfForDeletion}`)
           .then((response) => {
             document
               .querySelector(`.btn-delete[data-cpf="${cpfForDeletion}"]`)
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cpfForEdition) {
       // Update current client
       axios
-        .put(`http://18.231.168.144:3000/clientes/${cpfForEdition}`, cliente)
+        .put(`${process.env.API_URL}/clientes/${cpfForEdition}`, cliente)
         .then((response) => {
           modal.style.display = 'none';
           form.reset();
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // Add new client
       axios
-        .post('http://18.231.168.144:3000/clientes', cliente)
+        .post(`${process.env.API_URL}/clientes`, cliente)
         .then((response) => {
           modal.style.display = 'none';
           form.reset();
