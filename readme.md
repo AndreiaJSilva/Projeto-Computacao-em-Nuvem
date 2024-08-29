@@ -38,7 +38,7 @@ CREATE TABLE clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
-    dataNascimento DATE NOT NULL,
+    data_nascimento DATE NOT NULL,
     email VARCHAR(255) NOT NULL
 );
 ```
