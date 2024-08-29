@@ -27,27 +27,32 @@
   <div id="container">
 
     <!-- Seção de Busca e Cadastro -->
-    <header class="header">
-      <div>
-        <h3>Lista de Clientes</h3>
-        <p id="client-count"></p>
-      </div>
-      <div class="actions">
-        <input type="text" id="searchInput" placeholder="Buscar cliente..." class="search-bar">
-        <button onclick="location.href='/frontend/cadastrar/cadastrar.html'" class="btn-secondary">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-          </svg>
-        </button>
+  <header class="header">
+    <div>
+      <h3>Lista de Clientes</h3>
+      <p id="client-count">Clientes encontrados: 0</p>
+    </div>
+    <div class="actions">
+      <!-- Campo de Busca -->
+      <input type="text" id="searchInput" placeholder="Buscar cliente..." class="search-bar">
+      
+      <!-- Botão para Buscar Cliente -->
+      <button id="searchButton" class="btn-secondary" title="Buscar Cliente">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+      </button>
 
-        <button id="open-add-modal" class="btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
-          Cadastrar Cliente
-        </button>
-      </div>
-    </header>
+      <!-- Botão para Cadastrar Cliente -->
+      <button id="open-add-modal" class="btn-primary" title="Cadastrar Cliente">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+        Cadastrar Cliente
+      </button>
+    </div>
+  </header>
+
 
     <section>
       <ul id="client-list" class="client-list"></ul>

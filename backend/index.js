@@ -21,6 +21,31 @@ app.get('/clientes', (req, res) => {
   });
 });
 
+app.get('/clientes/:searchValue', (req, res) => {
+  const { searchValue } = req.params;
+  console.log(`Buscando cliente com valor: ${searchValue}`);
+  
+  // Inicializar a SQL e os parâmetros
+  let sql = 'SELECT * FROM clientes WHERE nome LIKE ? OR cpf LIKE ? OR email LIKE ?';
+  const params = [`%${searchValue}%`, `%${searchValue}%`, `%${searchValue}%`];
+  
+  if (searchValue === '') {
+    sql = 'SELECT * FROM clientes';
+  }
+
+  connection.query(sql, params, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Cliente não encontrado' });
+    }
+
+    res.json(results.length === 1 ? results[0] : results);
+  });
+});
+
 app.get('/clientes/:cpf', (req, res) => {
   const { cpf } = req.params;
   const sql = 'SELECT * FROM clientes WHERE cpf = ?';
@@ -37,6 +62,7 @@ app.get('/clientes/:cpf', (req, res) => {
     res.json(results[0]);
   });
 });
+
 
 app.post('/clientes', (req, res) => {
   const { nome, cpf, data_nascimento, email } = req.body;
