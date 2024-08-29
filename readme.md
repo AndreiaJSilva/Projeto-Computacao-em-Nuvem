@@ -38,7 +38,7 @@ CREATE TABLE clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
-    dataNascimento DATE NOT NULL,
+    data_nascimento DATE NOT NULL,
     email VARCHAR(255) NOT NULL
 );
 ```
@@ -104,4 +104,4 @@ Para iniciar o backend, siga os seguintes passos:
 
 ### 5. **Utilizando o Sistema**
 
-O sistema estará disponível em http://localhost:3000.
+O sistema estará disponível em http://18.231.168.144:3000
